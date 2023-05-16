@@ -1,0 +1,53 @@
+class Animal {
+    protected String nome;
+    protected double peso;
+    
+    public Animal(String nome, double peso) {
+        this.nome = nome;
+        this.peso = peso;
+    }
+    
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Peso: " + peso;
+    }
+}
+
+class Peixe extends Animal {
+    private String tipoHabitat;
+    
+    public Peixe(String nome, double peso, String tipoHabitat) {
+        super(nome, peso);
+        this.tipoHabitat = tipoHabitat;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + ", Tipo de Habitat: " + tipoHabitat;
+    }
+}
+
+class Cachorro extends Animal {
+    private String raca;
+    
+    public Cachorro(String nome, double peso, String raca) {
+        super(nome, peso);
+        this.raca = raca;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + ", Raça: " + raca;
+    }
+}
+
+public class TesteHeranca {
+    public static void main(String[] args) {
+        Peixe peixe = new Peixe("Peixe Dourado", 0.5, "Água Doce");
+        Cachorro cachorro = new Cachorro("Labrador Retriever", 30.5, "Labrador");
+        
+        System.out.println(peixe);
+        System.out.println(cachorro);
+    }
+}
+
