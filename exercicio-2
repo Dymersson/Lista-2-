@@ -1,0 +1,85 @@
+class Pessoa {
+    private String nome;
+    private int idade;
+    private String sexo;
+
+    public Pessoa(String nome, int idade, String sexo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.sexo = sexo;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Idade: " + idade + ", Sexo: " + sexo;
+    }
+}
+
+class Empregado extends Pessoa {
+    private double salario;
+    private String matricula;
+
+    public Empregado(String nome, int idade, String sexo, double salario, String matricula) {
+        super(nome, idade, sexo);
+        this.salario = salario;
+        this.matricula = matricula;
+    }
+
+    public double valorInss() {
+        return salario * 0.11;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Salário: " + salario + ", Matrícula: " + matricula;
+    }
+}
+
+class Cliente extends Pessoa {
+    private double valorDivida;
+    private int anoNascim;
+
+    public Cliente(String nome, int idade, String sexo, double valorDivida, int anoNascim) {
+        super(nome, idade, sexo);
+        this.valorDivida = valorDivida;
+        this.anoNascim = anoNascim;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Valor da Dívida: " + valorDivida + ", Ano de Nascimento: " + anoNascim;
+    }
+}
+
+class Vendedor extends Empregado {
+    private double valorVendas;
+    private int qntVendas;
+
+    public Vendedor(String nome, int idade, String sexo, double salario, String matricula, double valorVendas, int qntVendas) {
+        super(nome, idade, sexo, salario, matricula);
+        this.valorVendas = valorVendas;
+        this.qntVendas = qntVendas;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Valor das Vendas: " + valorVendas + ", Quantidade de Vendas: " + qntVendas;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Pessoa pessoa = new Pessoa("João", 30, "Masculino");
+        System.out.println(pessoa);
+
+        Empregado empregado = new Empregado("Maria", 35, "Feminino", 2000.0, "1234");
+        System.out.println(empregado);
+        System.out.println("Valor INSS: " + empregado.valorInss());
+
+        Cliente cliente = new Cliente("Pedro", 25, "Masculino", 1000.0, 1990);
+        System.out.println(cliente);
+
+        Vendedor vendedor = new Vendedor("Ana", 28, "Feminino", 1500.0, "5678", 5000.0, 10);
+        System.out.println(vendedor);
+    }
+}
